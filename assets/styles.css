@@ -79,3 +79,13 @@ body {
     background: #ff9393;
 
 }
+
+/* Start media queries */
+/* Media Query max-width: 768px */
+@media (max-width: 768px) {
+    .app {
+        width: 100%;
+        margin-top: 50px;
+        padding: 20px;
+    }
+}

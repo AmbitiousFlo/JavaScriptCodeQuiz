@@ -20,5 +20,5 @@ if (allScores !== null) {
 }
 // Event listener to move to main page
 goBack.addEventListener("click", function () {
-    window.location.replace("./main.html");
+    window.location.replace("");
 });

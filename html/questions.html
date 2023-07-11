@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="viewport" content="ie=edge">
+    <title>JavaScript Code Quiz</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+
+<body>
+    <!-- Link to highscores -->
+    <a href="./highscores.html">
+        <h3>View Highscores</h3>
+    </a>
+
+    <p>Time: <label for="" id="timer">0</p>
+
+
+    <section id="app">
+        <section class="quiz">
+            <h2 id="question">Question goes here</h2>
+            <ul id="answer-buttons">
+                <li><button class="btn">Answer 1</button></li>
+                <li><button class="btn">Answer 2</button></li>
+                <li><button class="btn">Answer 3</button></li>
+                <li><button class="btn">Answer 4</button></li>
+            </ul>
+            <button id="next-btn">Next</button>
+        </section>
+
+        <section id="initial-section" class="hide">
+            <h3>All Done</h3>
+            <p>Your final score is <label for="" id="score">80</label></p>
+
+            Enter Initials: <input type="text" id="initial-input">
+            <button id="save-btn">Save</button>
+        </section>
+    </section>
+
+    <script src="../assets/js/questions.js"></script>
+</body>

@@ -51,7 +51,9 @@ const questions = [
 const questionElement = document.getElementById("question");
 const answerButtons = document.getElementById("answer-buttons");
 const nextButton = document.getElementById("next-btn");
-
+const timerElement = document.getElementById("timer")
+let timeLeft = 75;
+let timerInterval;
 let currentQuestionIndex = 0;
 let score = 0;
 
@@ -60,8 +62,21 @@ let score = 0;
 function startQuiz() {
   currentQuestionIndex = 0;
   score = 0;
+  timeLeft = 75;
   nextButton.innerHTML = "Next";
   showQuestion();
+  timerInterval = setInterval(updateTimer, 1000);
+}
+
+// Update the timer element with the current time left and check if time is up
+function updateTimer() {
+  timerElement.textContent = timeLeft;
+  timeLeft--;
+
+  if (timeLeft < 0) {
+    clearInterval(timerInterval);
+    outOfTime();
+  }
 }
 
 // Display the current question and its answer options

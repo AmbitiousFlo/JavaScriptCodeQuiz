@@ -5,6 +5,13 @@
     box-sizing: border-box;
 }
 
+.timer {
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    text-align: center;
+    font-size: 40px;
+}
+
 body {
     background: #001e4d;
 }

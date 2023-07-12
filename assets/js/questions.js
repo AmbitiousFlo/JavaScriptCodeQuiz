@@ -2,7 +2,7 @@
 
 const questions = [
   {
-    question: "Which is the largest animal in the world?",
+    question: "Commonly used data types DO NOT include:",
     answers: [
       { text: "Shark", correct: false },
       { text: "Blue whale", correct: true },
@@ -51,7 +51,8 @@ const questions = [
 const questionElement = document.getElementById("question");
 const answerButtons = document.getElementById("answer-buttons");
 const nextButton = document.getElementById("next-btn");
-const timerElement = document.getElementById("timer")
+const timerElement = document.getElementById("timer");
+const saveButton = document.getElementById('save-btn');
 let timeLeft = 75;
 let timerInterval;
 let currentQuestionIndex = 0;
@@ -128,21 +129,37 @@ function selectAnswer(e) {
   nextButton.style.display = "block";
 }
 
-function showScore() {
-  resetState();
-  questionElement.innerHTML = `You scored ${score} out of ${questions.length}!`;
-  nextButton.innerHTML = "Play Again";
-  nextButton.style.display = "block";
-}
-
 function handleNextButton() {
   currentQuestionIndex++;
   if (currentQuestionIndex < questions.length) {
     showQuestion();
   } else {
-    showScore();
+    showInitialSection();
   }
 }
+
+function showInitialSection() {
+  const quizSection = document.querySelector('.quiz');
+  const initialSection = document.getElementById('initial-section');
+  quizSection.classList.add('hide');
+  initialSection.classList.remove('hide');
+}
+
+function saveScore() {
+  const initialsInput = document.getElementById('initial-input');
+  const initials = initialsInput.value;
+  // Perform actions with initials, e.g., save to leaderboards
+
+  // Reset the quiz and show the quiz section again
+  initialsInput.value = '';
+  const quizSection = document.querySelector('.quiz');
+  const initialSection = document.getElementById('initial-section');
+  quizSection.classList.remove('hide');
+  initialSection.classList.add('hide');
+  startQuiz();
+}
+
+
 
 nextButton.addEventListener("click", () => {
   if (currentQuestionIndex < questions.length) {
@@ -150,6 +167,9 @@ nextButton.addEventListener("click", () => {
   } else {
     startQuiz();
   }
+
+saveButton.addEventListener('click', saveScore);
+
 });
 
 startQuiz();

@@ -16,6 +16,10 @@ body {
     background: #001e4d;
 }
 
+body{
+    text-align: center;
+}
+
 #app {
     background: #fff;
     width: 90%;

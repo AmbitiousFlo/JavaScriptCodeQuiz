@@ -4,46 +4,46 @@ const questions = [
   {
     question: "Commonly used data types DO NOT include:",
     answers: [
-      { text: "Shark", correct: false },
-      { text: "Blue whale", correct: true },
-      { text: "Elephant", correct: false },
-      { text: "Giraffe", correct: false },
+      { text: "Strings", correct: false },
+      { text: "Booleans", correct: true },
+      { text: "Alerts", correct: false },
+      { text: "Numbers", correct: false },
     ]
   },
   {
-    question: "Which is the largest animal in the world?",
+    question: "Arrays in JavaScript can be used to store ____.",
     answers: [
-      { text: "Shark", correct: false },
-      { text: "Blue whale", correct: true },
-      { text: "Elephant", correct: false },
-      { text: "Giraffe", correct: false },
+      { text: "Numbers and Strings", correct: false },
+      { text: "Other arrays", correct: false },
+      { text: "Booleans", correct: true },
+      { text: "All of the above", correct: false },
     ]
   },
   {
-    question: "Which is the largest animal in the world?",
+    question: "String values must be enclosed within _____ when being assigned to variables.",
     answers: [
-      { text: "Shark", correct: false },
-      { text: "Blue whale", correct: true },
-      { text: "Elephant", correct: false },
-      { text: "Giraffe", correct: false },
+      { text: "Curly brackets", correct: true },
+      { text: "Commas", correct: false },
+      { text: "Quotes", correct: false },
+      { text: "Parentheses", correct: false },
     ]
   },
   {
-    question: "Which is the largest animal in the world?",
+    question: "The condition in an if / else statement is enclosed within ____.",
     answers: [
-      { text: "Shark", correct: false },
-      { text: "Blue whale", correct: true },
-      { text: "Elephant", correct: false },
-      { text: "Giraffe", correct: false },
+      { text: "Parentheses", correct: false },
+      { text: "Square brackets", correct: false },
+      { text: "Curly brackets", correct: true },
+      { text: "Quotes", correct: false },
     ]
   },
   {
-    question: "Which is the largest animal in the world?",
+    question: "A very useful tool used during development and debugging for printing content to the debugger is:",
     answers: [
-      { text: "Shark", correct: false },
-      { text: "Blue whale", correct: true },
-      { text: "Elephant", correct: false },
-      { text: "Giraffe", correct: false },
+      { text: "For Loops", correct: true },
+      { text: "console.log", correct: false },
+      { text: "JavaScript", correct: false },
+      { text: "Terminal/Bash", correct: false },
     ]
   }
 ];
@@ -152,7 +152,7 @@ function showInitialSection() {
 }
 
 function saveScore() {
-  const initialsInput = document.getElementById('initial-input');
+  const initialsInput = document.getElementById("initial-input");
   const initials = initialsInput.value;
   // Perform actions with initials, e.g., save to leaderboards
 

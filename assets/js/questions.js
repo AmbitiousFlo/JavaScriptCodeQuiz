@@ -5,8 +5,8 @@ const questions = [
     question: "Commonly used data types DO NOT include:",
     answers: [
       { text: "Strings", correct: false },
-      { text: "Booleans", correct: true },
-      { text: "Alerts", correct: false },
+      { text: "Booleans", correct: false },
+      { text: "Alerts", correct: true },
       { text: "Numbers", correct: false },
     ]
   },
@@ -15,33 +15,33 @@ const questions = [
     answers: [
       { text: "Numbers and Strings", correct: false },
       { text: "Other arrays", correct: false },
-      { text: "Booleans", correct: true },
-      { text: "All of the above", correct: false },
+      { text: "Booleans", correct: false },
+      { text: "All of the above", correct: true },
     ]
   },
   {
     question: "String values must be enclosed within _____ when being assigned to variables.",
     answers: [
-      { text: "Curly brackets", correct: true },
+      { text: "Curly brackets", correct: false },
       { text: "Commas", correct: false },
-      { text: "Quotes", correct: false },
+      { text: "Quotes", correct: true },
       { text: "Parentheses", correct: false },
     ]
   },
   {
     question: "The condition in an if / else statement is enclosed within ____.",
     answers: [
-      { text: "Parentheses", correct: false },
+      { text: "Parentheses", correct: true },
       { text: "Square brackets", correct: false },
-      { text: "Curly brackets", correct: true },
+      { text: "Curly brackets", correct: false },
       { text: "Quotes", correct: false },
     ]
   },
   {
     question: "A very useful tool used during development and debugging for printing content to the debugger is:",
     answers: [
-      { text: "For Loops", correct: true },
-      { text: "console.log", correct: false },
+      { text: "For Loops", correct: false },
+      { text: "console.log", correct: true },
       { text: "JavaScript", correct: false },
       { text: "Terminal/Bash", correct: false },
     ]

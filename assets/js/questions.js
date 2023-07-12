@@ -67,6 +67,7 @@ function startQuiz() {
   nextButton.innerHTML = "Next";
   showQuestion();
   timerInterval = setInterval(updateTimer, 1000);
+  updateScoreDisplay();
 }
 
 // Update the timer element with the current time left and check if time is up
@@ -80,8 +81,7 @@ function updateTimer() {
   }
 }
 
-// Display the current question and its answer options
-// Add event listeners to the answer buttons
+
 function showQuestion() {
   resetState();
   let currentQuestion = questions[currentQuestionIndex];
@@ -117,6 +117,7 @@ function selectAnswer(e) {
   if (isCorrect) {
     selectedBtn.classList.add("correct");
     score++;
+    updateScoreDisplay(); 
   } else {
     selectedBtn.classList.add("incorrect");
   }
@@ -127,6 +128,11 @@ function selectAnswer(e) {
     button.disabled = true;
   });
   nextButton.style.display = "block";
+}
+
+function updateScoreDisplay() {
+  const scoreLabel = document.getElementById("score");
+  scoreLabel.textContent = score;
 }
 
 function handleNextButton() {

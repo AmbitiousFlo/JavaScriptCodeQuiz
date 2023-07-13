@@ -6,6 +6,8 @@ var titleEl=document.getElementById('title')
 var timerEl=document.getElementById('timer')
 var choicesEl = document.querySelectorAll(".choices")
 var questionIndex=0
+
+// All of the questions 
 var questionsArray=[
     {
         title:"Commonly used data types DO NOT include:",
@@ -47,7 +49,7 @@ var timeLeft=questionsArray.length* 15
 var setIntervalId=0;
 
 function startQuiz(){
-  //  introSectionEl.classList.add("hide")
+  //  Hide class 
   introSectionEl.setAttribute("class","hide")
   questionSectionEl.removeAttribute("class")
   setIntervalId=setInterval(countDown,1000)
@@ -84,6 +86,8 @@ function nextQuestion(event){
   }
 }
 
+
+// Event listener
 startBtn.addEventListener("click", startQuiz)
 
 questionSectionEl.addEventListener("click",nextQuestion )

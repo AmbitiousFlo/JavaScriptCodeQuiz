@@ -1,181 +1,89 @@
-// Array of objects containing the question and answer options
-
-const questions = [
-  {
-    question: "Commonly used data types DO NOT include:",
-    answers: [
-      { text: "Strings", correct: false },
-      { text: "Booleans", correct: false },
-      { text: "Alerts", correct: true },
-      { text: "Numbers", correct: false },
-    ]
-  },
-  {
-    question: "Arrays in JavaScript can be used to store ____.",
-    answers: [
-      { text: "Numbers and Strings", correct: false },
-      { text: "Other arrays", correct: false },
-      { text: "Booleans", correct: false },
-      { text: "All of the above", correct: true },
-    ]
-  },
-  {
-    question: "String values must be enclosed within _____ when being assigned to variables.",
-    answers: [
-      { text: "Curly brackets", correct: false },
-      { text: "Commas", correct: false },
-      { text: "Quotes", correct: true },
-      { text: "Parentheses", correct: false },
-    ]
-  },
-  {
-    question: "The condition in an if / else statement is enclosed within ____.",
-    answers: [
-      { text: "Parentheses", correct: true },
-      { text: "Square brackets", correct: false },
-      { text: "Curly brackets", correct: false },
-      { text: "Quotes", correct: false },
-    ]
-  },
-  {
-    question: "A very useful tool used during development and debugging for printing content to the debugger is:",
-    answers: [
-      { text: "For Loops", correct: false },
-      { text: "console.log", correct: true },
-      { text: "JavaScript", correct: false },
-      { text: "Terminal/Bash", correct: false },
-    ]
-  }
-];
-
-const questionElement = document.getElementById("question");
-const answerButtons = document.getElementById("answer-buttons");
-const nextButton = document.getElementById("next-btn");
-const timerElement = document.getElementById("timer");
-const saveButton = document.getElementById('save-btn');
-let timeLeft = 75;
-let timerInterval;
-let currentQuestionIndex = 0;
-let score = 0;
-
-// Initialize the quiz by setting the current question index and score
-// Display the "Next" button and show the first question
-function startQuiz() {
-  currentQuestionIndex = 0;
-  score = 0;
-  timeLeft = 75;
-  nextButton.innerHTML = "Next";
-  showQuestion();
-  timerInterval = setInterval(updateTimer, 1000);
-  updateScoreDisplay();
-}
-
-// Update the timer element with the current time left and check if time is up
-function updateTimer() {
-  timerElement.textContent = timeLeft;
-  timeLeft--;
-
-  if (timeLeft < 0) {
-    clearInterval(timerInterval);
-    outOfTime();
-  }
-}
-
-
-function showQuestion() {
-  resetState();
-  let currentQuestion = questions[currentQuestionIndex];
-  let questionNo = currentQuestionIndex + 1;
-  questionElement.innerHTML = questionNo + ". " + currentQuestion.question;
-
-  currentQuestion.answers.forEach(answer => {
-    const button = document.createElement("button");
-    button.innerHTML = answer.text;
-    button.classList.add("btn");
-    answerButtons.appendChild(button);
-    if (answer.correct) {
-      button.dataset.correct = answer.correct;
+var startBtn= document.getElementById("start-btn")
+var introSectionEl= document.getElementById("intro-section")
+ 
+var questionSectionEl=document.getElementById("question-section")
+var titleEl=document.getElementById('title')
+var timerEl=document.getElementById('timer')
+var choicesEl = document.querySelectorAll(".choices")
+var questionIndex=0
+var questionsArray=[
+    {
+        title:"Commonly used data types DO NOT include:",
+        choices:["Strings","Booleans","Alerts","Numbers"],
+        answer:"Alerts" 
+    },
+    {
+        title:"Arrays in JavaScript can be used to store ____.",
+        choices:["Numbers and Strings","Other arrays","Booleans","All of the above"],
+        answer:"All of the above" 
+    },
+    {
+        title:"String values must be enclosed within _____ when being assigned to variables.",
+        choices:["Curly brackets","Commas","Quotes","Parentheses"],
+        answer:"Quotes" 
+    },
+    {
+        title:"The condition in an if / else statement is enclosed within ____.",
+        choices:["Parentheses","Square brackets","Curly brackets","Quotes"],
+        answer:"Parentheses" 
+    },
+    {
+        title:"A very useful tool used during development and debugging for printing content to the debugger is:",
+        choices:["For Loops","console.log","JavaScript","Terminal/Bash"],
+        answer:"console.log" 
     }
-    button.addEventListener("click", selectAnswer);
-  });
+]
+
+var timeLeft=questionsArray.length* 15
+
+/*
+  1. hide intro section
+  2. start timer
+  3. show questions
+  4. data structure to store questions and choices
+
+*/
+
+var setIntervalId=0;
+
+function startQuiz(){
+  //  introSectionEl.classList.add("hide")
+  introSectionEl.setAttribute("class","hide")
+  questionSectionEl.removeAttribute("class")
+  setIntervalId=setInterval(countDown,1000)
+  showQuestions()
 }
 
-// Reset the state of the quiz by hiding the "Next" button and clearing the answer buttons
-function resetState() {
-  nextButton.style.display = "none";
-  while (answerButtons.firstChild) {
-    answerButtons.removeChild(answerButtons.firstChild);
+function countDown(){
+ timerEl.textContent=timeLeft--
+ if(timeLeft===0){
+    clearInterval(setIntervalId)
+ }
+}
+
+function showQuestions(){
+    titleEl.textContent=questionsArray[questionIndex].title
+
+    choicesEl[0].textContent=questionsArray[questionIndex].choices[0]
+
+    choicesEl[1].textContent=questionsArray[questionIndex].choices[1]
+
+    choicesEl[2].textContent=questionsArray[questionIndex].choices[2]
+
+    choicesEl[3].textContent=questionsArray[questionIndex].choices[3]
+
+
+
+}
+
+function nextQuestion(event){
+  var currentElement= event.target
+  if(currentElement.matches("button")){
+    questionIndex++
+    showQuestions()
   }
 }
 
-// Handle the selection of an answer by the user
-// Update the score, apply feedback to the selected button
-// Disable all buttons, and display the "Next" button
-function selectAnswer(e) {
-  const selectedBtn = e.target;
-  const isCorrect = selectedBtn.dataset.correct === "true";
-  if (isCorrect) {
-    selectedBtn.classList.add("correct");
-    score++;
-    updateScoreDisplay(); 
-  } else {
-    selectedBtn.classList.add("incorrect");
-  }
-  Array.from(answerButtons.children).forEach(button => {
-    if (button.dataset.correct == "true") {
-      button.classList.add("correct");
-    }
-    button.disabled = true;
-  });
-  nextButton.style.display = "block";
-}
+startBtn.addEventListener("click", startQuiz)
 
-function updateScoreDisplay() {
-  const scoreLabel = document.getElementById("score");
-  scoreLabel.textContent = score;
-}
-
-function handleNextButton() {
-  currentQuestionIndex++;
-  if (currentQuestionIndex < questions.length) {
-    showQuestion();
-  } else {
-    showInitialSection();
-  }
-}
-
-function showInitialSection() {
-  const quizSection = document.querySelector('.quiz');
-  const initialSection = document.getElementById('initial-section');
-  quizSection.classList.add('hide');
-  initialSection.classList.remove('hide');
-}
-
-function saveScore() {
-  const initialsInput = document.getElementById("initial-input");
-  const initials = initialsInput.value;
-  // Perform actions with initials, e.g., save to leaderboards
-
-  // Reset the quiz and show the quiz section again
-  initialsInput.value = '';
-  const quizSection = document.querySelector('.quiz');
-  const initialSection = document.getElementById('initial-section');
-  quizSection.classList.remove('hide');
-  initialSection.classList.add('hide');
-  startQuiz();
-}
-
-
-
-nextButton.addEventListener("click", () => {
-  if (currentQuestionIndex < questions.length) {
-    handleNextButton();
-  } else {
-    startQuiz();
-  }
-
-saveButton.addEventListener('click', saveScore);
-
-});
-
-startQuiz();
+questionSectionEl.addEventListener("click",nextQuestion )

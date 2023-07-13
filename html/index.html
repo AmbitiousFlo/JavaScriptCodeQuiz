@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="viewport" content="ie=edge">
+    <title>Code Quiz Challenge</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+
+<body>
+    <header>
+        <!-- Link to highscores -->
+        <h3>View Highscores</h3>
+        <section class="timer">
+            <p>Time: <label for="" id="timer">0</label></p>
+        </section>
+    </header>
+
+    <main>
+
+        <section id="intro-section">
+            <h1>Coding Quiz Challenge</h1>
+            <p>Welcome to the coding quiz challenge! Try and answer the questions to the best of your ability in the
+                time alloted, then save your initials at the end so your score will be saved.
+            </p>
+            <button id="start-btn">Start Quiz</button>
+        </section>
+
+
+        <section id="question-section" class="hide">
+            <h2 id="title">question goes here</h2>
+            <ul>
+                <li><button class="choices">Answer 1</button></li>
+                <li><button class="choices">Answer 2</button></li>
+                <li><button class="choices">Answer 3</button></li>
+                <li><button class="choices">Answer 4</button></li>
+            </ul>
+            <button id="next-btn">Next</button>
+        </section>
+        </section>
+
+
+        
+            <section id="initial-section" class="hide">
+                <h3>All Done</h3>
+                <p>Your final score is <label for="" id="score">80</label> </p>
+
+                Enter Initials: <input type="text" id="initial-input">
+                <button id="save-btn">Save</button>
+            </section>
+            <section id="highscore-section" class="hide">
+                <h3>High Scores</h3>
+                <ol>
+                    <li>CF-100</li>
+                    <li>CF-100</li>
+                    <li>CF-100</li>
+                    <li>CF-100</li>
+                </ol>
+
+                <button id="go-back-bt">Go Back</button>
+                <button id="clear-btn">Clear History</button>
+            </section>
+    </main>
+
+    <footer>
+
+    </footer>
+
+    <script src="../assets/js/questions.js"></script>
+
+</body>
+
+</html>
